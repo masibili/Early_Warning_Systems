@@ -1,0 +1,37 @@
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+# Load the dataset from the Excel file
+file_path = r'insert file path'
+df = pd.read_excel(file_path)
+
+# Show the first few rows and the column names to understand its structure
+df.head(), df.columns.tolist()
+
+# Filter the dataset to include only the specified variables for correlation analysis
+selected_columns = [
+    'presidential_system', 'GDP_per_capita(USD)', 'Years_of_independence',
+    'Population_in_slums (%)', 'regional_association',
+    'Log_Density', 'Population_2023', 'Land_Area', 'Log_Coverage', 'Log_Quality',
+    'Multi-Hazards_History'
+]
+filtered_df = df[selected_columns]
+
+# Compute the correlation matrix
+correlation_matrix = filtered_df.corr()
+
+print(correlation_matrix)
+
+# Set up the matplotlib figure
+plt.figure(figsize=(12, 10))
+
+# Draw the heatmap with the mask and correct aspect ratio
+sns.heatmap(correlation_matrix, annot=True, fmt=".2f", cmap='coolwarm', square=True, linewidths=.5)
+
+# Add titles and labels
+plt.title('Correlation Matrix of Selected Variables')
+plt.xlabel('Variables')
+plt.ylabel('Variables')
+
+plt.show()

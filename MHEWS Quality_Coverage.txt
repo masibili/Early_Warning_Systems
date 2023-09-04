@@ -1,0 +1,17 @@
+import matplotlib.pyplot as plt
+import pandas as pd
+
+data = pd.read_excel(r'insert file path here')
+
+# Scatter plot for Quality vs. Coverage
+plt.figure(figsize=(10, 6))
+plt.scatter(data['Log_Quality'],
+            data['Log_Coverage'],
+            color='green',
+            alpha=0.6)
+plt.xlabel('Log_Quality of EWS')
+plt.ylabel('Log_Coverage')
+plt.title('Comparison of Quality vs. Coverage')
+plt.grid()
+plt.tight_layout()
+plt.show()

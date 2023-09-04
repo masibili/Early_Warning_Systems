@@ -1,0 +1,24 @@
+import matplotlib.pyplot as plt
+import pandas as pd
+
+data = pd.read_excel(r'insert file path')
+
+# Setting up the figure and axes
+fig, ax = plt.subplots(nrows=2, ncols=1, figsize=(12, 12))
+
+# Scatter plot for Quality vs. Current GDP
+ax[0].scatter(data['Internet_Users(%)'], data['Log_Quality'], color='blue', alpha=0.6)
+ax[0].set_title('Coverage vs. IT Access')
+ax[0].set_xlabel('Internet_Users(%)')
+ax[0].set_ylabel('Log Quality')
+ax[0].grid(True)
+
+# Scatter plot for Coverage vs. Current GDP
+ax[1].scatter(data['Internet_Users(%)'], data['Log_Coverage'], color='red', alpha=0.6)
+ax[1].set_title('Coverage vs. IT Access')
+ax[1].set_xlabel('Internet_Users(%)')
+ax[1].set_ylabel('Log Coverage')
+ax[1].grid(True)
+
+plt.tight_layout()
+plt.show()
